@@ -1,0 +1,121 @@
+.Header{
+    text-align: center;
+
+   
+}
+.Header .SearchInput{
+    font-family: monospace;
+    
+}
+.Header .SearchButton{
+    background: black;
+    color: yellow;
+    font-family: monospace;
+}
+.font-text-class{
+    font-family: monospace;
+}
+.Header .SearchButton:hover{
+    background: white;
+    color: black;
+}
+.Content{
+    display: flex;
+    font-size: 15px;
+    height: 188px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    box-shadow: 0px 10px 10px 0px black;
+}
+.Content:hover{
+    box-shadow: 0px 10px 10px 0px white;
+    border: 1px solid white;
+}
+.content-image{
+    flex: 30%;
+}
+.content-information{
+    flex: 70%;
+    color: white;
+}
+.content-information-Description{  
+    max-height: 108px;
+    overflow-y: auto;
+ }
+
+ .link-active{
+    color: white;
+    font-size: 20px;
+ }
+ .link-active:hover{
+    color: yellow;
+    font-size: 20px;
+ }
+ .video-content{
+    margin-top: 20px;
+    padding: 20px;
+ }
+ .video-content-information{
+    display: flex;
+ }
+ .video-content-information .video-content-cutting{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+ }
+ .video-content-back{
+    margin-bottom: 20px;
+ }
+
+ .video-content-information .video-content-cutting > input:nth-child(1), input:nth-child(2){
+    text-align: center;
+ }
+
+ .btn-settime{
+    height: 100px;
+    font-size: 20px;
+    border: 4px solid yellow;
+    background: black;
+    color: white;
+    margin: 10px;
+    border-radius: 40px;
+ }
+ .btn-settime:hover{
+    background: white;
+    color: black;
+    border: 4px solid red;
+ }
+ .inform-error{
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    background: red;
+    margin: 10px;
+ }
+ .inform-loading{
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    background: #637db0;
+    margin: 10px;
+ }
+ .link-download{
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 26px;
+    margin-top: 23px;
+    color: white;
+    font-family: monospace;
+    border-radius: 20px;
+ }
+ .link-download:hover{
+    color: rgb(243, 106, 8);
+ }
+ .link-download:active {
+    background-color: black;
+    color: white;
+  }
