@@ -24,9 +24,9 @@ This is a web application named Youtube Video Cutting App that allows users to s
 - Run at Server with `node index.js` and open your browser and navigate to http://localhost:9000 to start the server
 
 ## Expectations about the project
-- [] Login/Logout
+- [ ] Login/Logout
 - [x] Search video on youtube
 - [x] Trim video
 - [x] Can download video cut
-- [] Save the video have been cut 
-- [] Can choose the video quality to cut
+- [ ] Save the video have been cut 
+- [ ] Can choose the video quality to cut
