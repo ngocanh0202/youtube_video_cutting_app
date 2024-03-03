@@ -52,4 +52,45 @@ const CutVideoYoutube = (req, res) => {
     }
 }
 
-module.exports = CutVideoYoutube;
+const TakeAudio = (req, res) => {
+    const { videoID, startTime, duration } = req.body;
+    try {
+        const videoStream = ytdl(`https://www.youtube.com/watch?v=${videoID}`, { quality: 'highestaudio' });
+        ffmpeg(videoStream)
+            .setStartTime(startTime)
+            .setDuration(duration)
+            .outputOptions([
+                '-c:v', 'copy', 
+                '-c:a', 'copy' 
+            ])
+            .format("mp3")
+            .on('end', function () {
+                console.log('Audio cutting completed');
+
+                cloudinary.uploader.upload(`${videoID}.mp3`, { resource_type: "video" }, function(error, result) { 
+                    if (error) {
+                        console.error('Error uploading audio to Cloudinary:', error);
+                        res.status(500).json({ error: 'Error uploading audio to Cloudinary' });
+                    } else {
+                        console.log('Audio uploaded to Cloudinary:', result);
+                        res.status(200).send( JSON.stringify({
+                            "url": result.url,
+                            "secure_url": result.secure_url,
+                            "playback_url": result.playback_url,
+                        }));
+                    }
+                });
+
+            })
+            .on('error', function (err) {
+                console.error('Error:', err.message);
+                res.status(500).json({ error: 'Error cutting audio' });
+            })
+            .save(`${videoID}.mp3`);
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: 'Error processing audio' });
+    }
+}
+
+module.exports = CutVideoYoutube, TakeAudio;
