@@ -136,6 +136,51 @@ export default function Video(){
                 setLoaddingVideo(false);
             })
     }
+    const handleTakeAudio = () => {
+        setLoaddingVideo(true);
+        fetch("http://localhost:9000/cutYoutubeVideo/TakeAudio",{
+                method: "POST",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: JSON.stringify({
+                    "videoID": params.VideoID,
+                    "startTime": timeStart.Time,
+                    "duration": timeEnd.Time // to do handle duration  
+                }),
+                
+            })
+            .then(res =>{
+                if(!res.ok){
+                    setError(data =>{
+                        return {
+                            ...data,
+                            "errorCutting": true
+                        }
+                    });
+                    throw new Error('Network response was not ok');
+                }
+                setError(data =>{
+                    return {
+                        ...data,
+                        "errorCutting": false
+                    }
+                });
+                return res.json();
+            })
+            .then(data => {
+                console.log(data);
+                setLinkDownload(data);
+            })
+            .catch(err => {
+                console.error("Error downloading: "+err.message);
+                
+            })
+            .finally(() => {
+                setLoaddingVideo(false);
+            })
+    }
 
     return(
         <div className="video-content">
@@ -162,7 +207,10 @@ export default function Video(){
                     {timeStart.Progress > timeEnd.Progress ? 
                             <span className="inform-error">Time Start over Time End</span>
                         :
-                            <input className="font-text-class btn-settime" type="submit" onClick={handleCuttingVideo} value="Start Cutting Video" />
+                            <>
+                                <input className="font-text-class btn-settime" type="submit" onClick={handleCuttingVideo} value="Start Cutting Video" />
+                                <input className="font-text-class btn-settime" type="submit" onClick={handleTakeAudio} value="Take audio" />
+                            </>
                     }
                     {loaddingVideo && <span className="inform-loading">Loading...</span>}
                     {error.errorSubmit && <span className="inform-error">Time Start over Time End</span>}
