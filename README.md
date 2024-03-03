@@ -28,5 +28,6 @@ This is a web application named Youtube Video Cutting App that allows users to s
 - [x] Search video on youtube
 - [x] Trim video
 - [x] Can download video cut
+- [ ] Can trim all video on youtube
 - [ ] Save the video have been cut 
 - [ ] Can choose the video quality to cut
