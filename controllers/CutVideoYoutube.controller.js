@@ -61,7 +61,6 @@ const TakeAudio = (req, res) => {
             .setDuration(duration)
             .outputOptions([
                 '-c:v', 'copy', 
-                '-c:a', 'copy' 
             ])
             .format("mp3")
             .on('end', function () {
@@ -93,4 +92,4 @@ const TakeAudio = (req, res) => {
     }
 }
 
-module.exports = CutVideoYoutube, TakeAudio;
+module.exports = { CutVideoYoutube, TakeAudio };

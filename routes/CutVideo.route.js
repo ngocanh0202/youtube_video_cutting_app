@@ -1,9 +1,9 @@
 const express = require('express');
-const {CutVideoYoutubeController, TakeAudioController} = require('../controllers/CutVideoYoutube.controller.js');
+const {CutVideoYoutube, TakeAudio} = require('../controllers/CutVideoYoutube.controller.js');
 
 const routers = express.Router();
 
-routers.post('/', CutVideoYoutubeController);
-routers.post('/TakeAudio', TakeAudioController);
+routers.post('/', CutVideoYoutube);
+routers.post('/TakeAudio', TakeAudio);
 
 module.exports = routers;
